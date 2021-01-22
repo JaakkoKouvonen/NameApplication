@@ -1,5 +1,4 @@
-﻿
-(function (nameApplication, $, undefined) {
+﻿(function (nameApplication, angular, undefined) {
     'use strict';
 
     nameApplication.controllers.controller('nameApplicationController', nameApplicationController);
@@ -14,7 +13,7 @@
         vm.onOrderMostPopular = orderMostPopular;
         vm.onOrderAlphabetical = orderAlphabetical;
         vm.onTotalAmount = totalAmount;
-        vm.onAmountName = amountName;
+        vm.onAmountByName = amountByName;
         vm.onShowJson = showJson;
 
         vm.alpha = false;
@@ -30,7 +29,7 @@
             name: ''
         }
 
-        vm.header = 'NameApplication'
+        vm.header = 'NameApplication';
 
         activate();
 
@@ -43,7 +42,7 @@
                 _.each(res.data, function (names) {
                     var allNames = JSON.stringify(names);
                     vm.model.names = JSON.parse(allNames);
-                    console.log(allNames);
+                    //console.log(allNames);
                 });
             });   
         }
@@ -65,17 +64,16 @@
              _.each(vm.model.names, function (names) {
                  var amount = names.amount;
                  vm.model.amount += amount;
-
              })   
             //_.each(vm.model.names, function (names) {
             //    vm.model.amount;
             //})
 
             //var amount = $filter(vm.model.amount).length();
-            //console.log("a", amount)
+            //console.log("amount", amount)
         }
 
-        function amountName(name) {
+        function amountByName(name) {
             vm.nameModel = _.find(vm.model.names, function (n) { return n.name === name; });
             if (_.isUndefined(vm.nameModel)) {
                 return;
@@ -92,4 +90,4 @@
             getData();
         }
     }
-}(window.nameApplication = window.nameApplication || {}, jQuery));
+}(window.nameApplication = window.nameApplication || {}, angular));

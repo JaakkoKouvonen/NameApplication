@@ -1,4 +1,4 @@
-﻿(function (nameApplication, $, undefined) {
+﻿(function (nameApplication, angular, undefined) {
     'use strict';
 
     nameApplication.controllers = angular.module('nameApplication.controllers', []);
@@ -7,4 +7,4 @@
         'nameApplication.controllers',
         'ngRoute'
     ]);
-}(window.nameApplication = window.nameApplication || {}, jQuery));
+}(window.nameApplication = window.nameApplication || {}, angular));

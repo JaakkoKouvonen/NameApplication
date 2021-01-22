@@ -13,17 +13,39 @@
     <script src="~/Scripts/underscore.js"></script>
     <script src="~/Application/nameApplication.module.js"></script>
     <script src="~/Application/nameApplicationController.js"></script>
-    <title></title>
 </head>
 <body ng-controller="nameApplicationController as nameApp">
     <main class="container" ng-cloak>
-        <form>
-            <div class="row">
-                <div class="col col-lg-12 col-lg-push-6 col-xs-12">
-                    <p class="h1 text-center">{{nameApp.header}}</p>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <span class="navbar-brand">{{nameApp.header}}</span>
+                <div class="row">
+                    <div class="col col-lg-12 col-lg-push-6 col-xs-12">
+                        <button type="button" class="btn btn-primary padding-left-15" ng-click="nameApp.onOrderMostPopular()">Most popular</button>
+                        <button type="button" class="btn btn-primary padding-left-15" ng-click="nameApp.onOrderAlphabetical()">Alphabetical</button>
+                        <button type="button" class="btn btn-success padding-left-15" ng-click="nameApp.onTotalAmount()">Total amount</button>
+                        @*<button type="submit" class="btn btn-success padding-left-15" ng-disabled="nameApp.name === undefined || nameApp.name === ''" ng-click="nameApp.onAmountByName(nameApp.name)">Amount as parameter</button>*@
+                        <button type="button" class="btn btn-secondary padding-left-15" ng-click="nameApp.onShowJson()">JSON</button>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
+                <div>
+                    <div class="col col-lg-12 col-xs-12">
+                        <form class="form-inline mt-2 mt-md-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Name" aria-label="Search" ng-model="nameApp.name">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0" ng-disabled="nameApp.name === ''" ng-click="nameApp.onAmountByName(nameApp.name)">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <div class="col col-lg-12 col-xs-12">
+                        <span style="color:white">Total amount: {{nameApp.model.amount}}</span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <form class="container">
+            @*<div class="row">
                 <div class="col col-lg-12 col-lg-push-6 col-xs-12">
                     <button type="button" class="btn btn-primary" ng-click="nameApp.onOrderMostPopular()">Most popular</button>
                     <button type="button" class="btn btn-primary" ng-click="nameApp.onOrderAlphabetical()">Alphabetical</button>
@@ -31,24 +53,24 @@
                     <button type="submit" class="btn btn-success" ng-disabled="nameApp.name === ''" ng-click="nameApp.onAmountName(nameApp.name)">Amount as parameter</button>
                     <button type="button" class="btn btn-secondary" ng-click="nameApp.onShowJson()">Json</button>
                 </div>
-            </div>
-            <div class="row">
+            </div>*@
+            @*<div class="row">
                 <div class="col col-lg-12 col-lg-push-6 col-xs-12">
                     <span class="text-center">total amount: {{nameApp.model.amount}}</span>
                 </div>
-            </div>
-            <div class="row">
+            </div>*@
+            @*<div class="row">
                 <div class="col col-lg-12 col-lg-push-6 col-xs-12">
                     Write name <input type="text" ng-model="nameApp.name">
                 </div>
-            </div>
+            </div>*@
             <div class="row margin-top-40" ng-if="nameApp.alpha != true && nameApp.para === false && nameApp.json === false">
                 <div class="col col-lg-12 col-xs-12 padding-top-8">
-                    <table>
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>All names:</th>
-                                <th class="padding-left-10">Amount:</th>
+                                <th class="border-top-none">All names:</th>
+                                <th class="padding-left-10 border-top-none">Amount:</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,11 +84,11 @@
             </div>
             <div class="row margin-top-40" ng-if="nameApp.alpha === true && nameApp.para === false && nameApp.json === false">
                 <div class="col col-lg-12 col-xs-12 padding-top-8">
-                    <table>
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>All names:</th>
-                                <th class="padding-left-10">Amount:</th>
+                                <th class="border-top-none">All names:</th>
+                                <th class="padding-left-10 border-top-none">Amount:</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,11 +102,11 @@
             </div>
             <div class="row margin-top-40" ng-if="nameApp.para === true">
                 <div class="col col-lg-12 col-xs-12 padding-top-8">
-                    <table>
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>All names:</th>
-                                <th class="padding-left-10">Amount:</th>
+                                <th class="border-top-none">All names:</th>
+                                <th class="padding-left-10 border-top-none">Amount:</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,11 +120,11 @@
             </div>
             <div class="row margin-top-40" ng-if="nameApp.json === true">
                 <div class="col col-lg-12 col-xs-12 padding-top-8">
-                    <table>
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>All names:</th>
-                                <th class="padding-left-10">Amount:</th>
+                                <th class="border-top-none">All names:</th>
+                                <th class="padding-left-10 border-top-none">Amount:</th>
                             </tr>
                         </thead>
                         <tbody>

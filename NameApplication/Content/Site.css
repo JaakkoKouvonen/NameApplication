@@ -33,3 +33,9 @@ textarea {
 .padding-left-10 {
     padding-left: 10px !important;
 }
+.padding-left-15 {
+    padding-left: 15px !important;
+}
+.border-top-none {
+    border-top: none !important;
+}
